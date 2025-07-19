@@ -1,0 +1,229 @@
+/* App.css */
+
+/* -----------------------------------
+   CSS Variables
+----------------------------------- */
+:root {
+  --bg: #0d1117;
+  --panel-bg: #161b22;
+  --card-bg: #0d1117;
+  --fg: #c9d1d9;
+  --fg-muted: #8b949e;
+  --primary: #238636;
+  --border: #30363d;
+}
+
+/* -----------------------------------
+   Global Reset
+----------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* -----------------------------------
+   Topbar
+----------------------------------- */
+.app-shell {
+  background: var(--bg);
+  min-height: 100vh;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border);
+}
+.topbar h1 {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+.topbar h1 small {
+  font-size: 0.65rem;
+  color: var(--fg-muted);
+  margin-left: 0.25rem;
+}
+.online-count {
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+
+/* -----------------------------------
+   Layout
+----------------------------------- */
+.body {
+  display: flex;
+  height: calc(100vh - 52px);
+}
+
+/* -----------------------------------
+   Sidebar
+----------------------------------- */
+.sidebar {
+  width: 240px;
+  background: var(--panel-bg);
+  border-right: 1px solid var(--border);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+.status {
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.status.disconnected {
+  background: #421a24;
+  color: #f85149;
+}
+.status.connected {
+  background: #033a16;
+  color: #56d364;
+}
+.sidebar button {
+  background: var(--primary);
+  border: none;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.sidebar .tips h3 {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+.sidebar .tips ul {
+  list-style: disc inside;
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}
+.sidebar .tips li {
+  margin-bottom: 0.3rem;
+}
+
+/* -----------------------------------
+   Main Panel
+----------------------------------- */
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.chat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+.card-header .icon {
+  margin-right: 0.5rem;
+}
+.card-body {
+  flex: 1;
+  position: relative;
+}
+.welcome {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--fg-muted);
+}
+.welcome .icon-large {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.welcome h2 {
+  margin-bottom: 0.25rem;
+  color: var(--fg);
+}
+.welcome p {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+.welcome .hint {
+  font-size: 0.8rem;
+}
+
+/* Chat window (after you’re matched) */
+.chat-window {
+  padding: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}
+.msg {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  max-width: 70%;
+  line-height: 1.4;
+}
+.msg.you {
+  background: #003d29;
+  align-self: flex-end;
+}
+.msg.stranger {
+  background: #21262d;
+  align-self: flex-start;
+}
+.msg.system {
+  background: #2f363d;
+  align-self: center;
+  font-style: italic;
+}
+
+/* -----------------------------------
+   Input Row
+----------------------------------- */
+.input-row {
+  display: flex;
+  margin-top: 0.75rem;
+}
+.input-row input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px 0 0 6px;
+  color: var(--fg);
+}
+.input-row input:disabled {
+  opacity: 0.5;
+}
+.input-row button {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  padding: 0 1rem;
+  cursor: pointer;
+  color: #fff;
+}
+.input-row button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
